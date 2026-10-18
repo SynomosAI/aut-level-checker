@@ -1,0 +1,45 @@
+# aut-level-checker — 完整文本
+
+本文件为 llms.txt 标准的「完整版」，供长上下文模型一次性读取本仓库的完整说明。
+
+## 这是什么
+
+`aut-level-checker` 是 SynomosAI 多域核验平台的一个 domain profile（域声明）仓，domain_id=`aut`，域名称「驾驶 · 自动化等级」，profile_version=`domain/1.0`，当前状态 `RESERVED`（占位，开放认领）。
+
+一句话：把「这套系统到底算几级、责任在谁」拆成可核验的属性，核验器只出示出处链、不下等级认定。
+
+## 解决什么问题
+
+1. 驾驶自动化等级直接决定责任归属与宣传口径，现实中普遍存在把 L2 说成「自动驾驶」的误导。
+2. AI 不该输出高于实测或未经确认的自动化等级，也不该把 L0-L2 描述为「无人驾驶」。
+3. 责任边界判定须人工复核，AI 不得单独给出责任归属结论。
+
+## 行业接入四件套
+
+- `domain.manifest.json`：域声明——4 个属性、签发方要求、ttl、assurance 下限、3 条红线。
+- `gate-map.json`：摩擦分级——结论类动作 require-owner；宣传误称、责任声明、等级上调全部 block。
+- `privacy.json`：隐私声明——默认关闭、最小必要、可撤回、可删除、默认不出境。
+- `checker.io.json`：核验器（MCP 工具）IO 契约——`shown/missing/expired/unverifiable` 四态；`_forbidden_outputs` 禁止等级认定与「自动驾驶/责任在系统」类面向客户结论。
+
+## 快速开始
+
+```bash
+git clone https://github.com/SynomosAI/aut-level-checker.git
+cd aut-level-checker
+python -m json.tool domain.manifest.json > /dev/null
+python -m json.tool checker.io.json      > /dev/null
+```
+
+## 触发词
+
+驾驶自动化分级 / L2 / ODD 设计运行条件 / 接管与最小风险策略 / 责任边界 / 自动驾驶宣传口径 / GB/T 40429 / 智能网联汽车 / domain profile / gate map / privacy by default-off / MCP 核验器 / attribute verification / red line coverage / 行业接入四件套。
+
+## 许可与权利
+
+- 代码与配置按 MIT 许可使用（© 2026 SynomosAI，见根目录 LICENSE）。
+- 文档的知识版权归 SynomosAI 所有。
+- 本域核验器只出示与核验，不构成自动化等级认定或责任归属结论；等级认定权在标准与监管。
+
+## 链接
+
+- 仓库: https://github.com/SynomosAI/aut-level-checker
