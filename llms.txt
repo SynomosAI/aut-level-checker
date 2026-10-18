@@ -1,0 +1,33 @@
+# aut-level-checker
+
+> 驾驶 · 自动化等级（L0-L5）域的「行业接入四件套」骨架：把「这套系统算几级、责任在谁」拆成可核验属性，核验器只出示与核验，不下等级认定。状态 RESERVED，开放给具备资质的运营方认领。
+
+`aut-level-checker` 是一个 domain profile（域声明）仓，domain_id=`aut`，profile_version=`domain/1.0`。它不提供可运行服务，资产是四份机器可读 JSON：域声明、摩擦分级、隐私声明、核验器 IO 契约。
+
+## 核心文件
+
+- [domain.manifest.json](domain.manifest.json): 本域声明（属性清单 / 签发方要求 / 有效期 / 红线）
+- [gate-map.json](gate-map.json): 本域摩擦分级 silent/warn/confirm/block/require-owner
+- [privacy.json](privacy.json): 本域隐私声明（默认关闭 / 最小必要 / 可撤回 / 可删除）
+- [checker.io.json](checker.io.json): 本域核验器（MCP 工具）IO 契约，只出示不下判定
+- [README.md](README.md): 项目说明、快速开始与属性清单（中文）
+- [README.en.md](README.en.md): English README
+
+## 可选
+
+- [LICENSE](LICENSE): MIT License（© 2026 SynomosAI）
+- [CODEOWNERS](CODEOWNERS): @SynomosAI/synomosai-gov
+- [SECURITY.md](SECURITY.md): 安全策略与报告途径
+- [AGENTS.md](AGENTS.md): 给 AI Agent 的工作指引
+- [llms-full.txt](llms-full.txt): 本仓完整说明（llms.txt 完整版）
+
+## 本域属性（4 个）
+
+- `aut.automation_level`：驾驶自动化等级（L0/L1/L2/L3/L4/L5，依 GB/T 40429）
+- `aut.odd_scope`：设计运行条件 ODD（道路/速度/天气/地理围栏）
+- `aut.takeover_capability`：接管与最小风险策略能力（not_applicable/driver_supervised/fallback_ready/no_driver_needed）
+- `aut.responsibility_boundary`：责任边界（driver/system/shared/undetermined，须人工核验）
+
+## 链接
+
+- 仓库: https://github.com/SynomosAI/aut-level-checker
